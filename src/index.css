@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+  .custom-fontfamily{
+    font-family: 'Pattaya', sans-serif;
+   }
+
