@@ -1,7 +1,11 @@
 import { BsSearch } from "react-icons/bs";
 import "./NavigationBar.css";
+import { useEffect, useState } from "react";
+import ToggleMood from "../../ToggleMood/ToggleMood";
 
 const NavigationBar = () => {
+    const [theme, setTheme] = useState("light"); // Default theme is "light"
+
   const NavLikes = (
     <>
       <div className="relative">
@@ -27,17 +31,29 @@ const NavigationBar = () => {
   );
 
   //   toggle button
-  const togglemood = (
-    <div className="flex gap-2">
-      <p>Dark Mood</p>
-      <div class="checkbox-wrapper-3">
-        <input type="checkbox" id="cbx-3" />
-        <label for="cbx-3" class="toggle">
-          <span></span>
-        </label>
-      </div>
-    </div>
-  );
+  const togglemood = 
+  <ToggleMood />
+//   (
+//     <div className="flex gap-2">
+//       <p>Dark Mood</p>
+//       <div className="checkbox-wrapper-3">
+//         <input
+//           type="checkbox"
+//           id="cbx-3"
+//           checked={theme === "dark"} // Check if theme is dark
+//           onChange={() => setTheme(theme === "light" ? "dark" : "light")} // Toggle theme
+//         />
+//         <label htmlFor="cbx-3" className="toggle">
+//           <span></span>
+//         </label>
+//       </div>
+//     </div>
+//   );
+  
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
 
   return (
     <div className="navbar bg-base-100 container mx-auto">
@@ -75,15 +91,6 @@ const NavigationBar = () => {
       <div className="navbar-center hidden lg:flex flex-row">
         <ul className="menu menu-horizontal px-1">{NavLikes}</ul>
       </div>
-      {/* <div className="navbar-end gap-4">
-        <p>Dark Mood</p>
-        <div class="checkbox-wrapper-3">
-          <input type="checkbox" id="cbx-3" />
-          <label for="cbx-3" class="toggle">
-            <span></span>
-          </label>
-        </div>
-      </div> */}
       <div className="hidden lg:flex navbar-end gap-4">{togglemood}</div>
     </div>
   );

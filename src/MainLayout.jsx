@@ -1,13 +1,13 @@
 import React from 'react';
 import NavigationBar from './component/Share/NavigationBar/NavigationBar';
+import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
     return (
         <div>
             <>
             <NavigationBar />
-            <h1>body</h1>
-            <h1>footer</h1>
+            <Outlet />
             </>
         </div>
     );
